@@ -1,0 +1,28 @@
+{
+  "name": "tau-factor-extension",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/bun": "latest",
+    "@types/chrome": "^0.0.280",
+    "@types/pako": "^2.0.3",
+    "rollup": "^4.24.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "firebase": "^11.0.1",
+    "firestore": "^1.1.6",
+    "pako": "^2.1.0"
+  },
+  "prettier": {
+    "semi": false
+  }
+}
