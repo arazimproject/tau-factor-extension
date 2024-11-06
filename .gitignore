@@ -1,3 +1,5 @@
 node_modules
 dist
 scripts/*.json
+extension.zip
+.DS_Store
