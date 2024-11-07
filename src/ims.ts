@@ -49,20 +49,27 @@ const tryAddButtons = async () => {
           addButton.style.borderRadius = "10px"
           addButton.innerText = "הוסף"
           addButton.onclick = async (e) => {
+            const hiddenIframe = document.createElement("iframe")
+            hiddenIframe.style.display = "none"
+            hiddenIframe.name = "hidden-iframe"
+            document.body.appendChild(hiddenIframe)
             e.preventDefault()
             const frmchart = Array.from(
               document.getElementsByName("frmchart")
             )[0] as HTMLFormElement
-            frmchart.target = "_blank"
+            frmchart.target = "hidden-iframe"
             await chrome.runtime.sendMessage({
               type: "setShouldSendData",
               shouldSendData: true,
             })
             const radio = tr.childNodes[12].childNodes[0] as HTMLInputElement
             radio.click()
+            radio.checked = false
+            addButton.style.display = "none"
             setTimeout(() => {
+              document.body.removeChild(hiddenIframe)
               window.location.reload()
-            }, 2000)
+            }, 5000)
           }
           td.appendChild(addButton)
           tr.appendChild(td)
