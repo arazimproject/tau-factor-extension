@@ -1,6 +1,7 @@
 <h1 align="center">
     🌎 TAU Factor Chrome Extension
     <br />
+    <img alt="Chrome Web Store Version" src="https://img.shields.io/chrome-web-store/v/ocnjdmhgcphlaeaoneikpobbjlkdpiib">
     <img src="https://img.shields.io/badge/updated-2025-purple.svg">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
@@ -24,3 +25,9 @@ To upload histograms from the IMS, browse to https://iims.tau.ac.il and you'll s
 </p>
 
 By clicking "הוסף" you will send the course's grade histogram! 😄
+
+# Roadmap
+
+- [x] Support semester pages on IMS
+- [ ] Support year pages as well on IMS
+- [ ] Support the new MyTAU as well
