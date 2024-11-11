@@ -94,6 +94,28 @@ const handler = async (
   } else if (request.type === "shouldSendData") {
     sendResponse(shouldSendData)
   } else if (request.type === "getData") {
+    if (request.semester.endsWith("all_year")) {
+      const year = request.semester.slice(0, 4)
+      const semesters = [year + "a", year + "b"]
+      const result = await chrome.storage.local.get([
+        `lastFetch-${semesters[0]}`,
+        `data-${semesters[0]}`,
+        `lastFetch-${semesters[1]}`,
+        `data-${semesters[1]}`,
+      ])
+      const allData: any = {}
+      for (const semester of semesters) {
+        const lastFetch = result[`lastFetch-${semester}`] ?? new Date("2019")
+        let data = result[`data-${semester}`]
+        if (Date.now() - new Date(lastFetch).getTime() > 1000 * 60 * 60 * 24) {
+          console.log(`Data outdated for ${semester}, refreshing`)
+          data = await getData(semester)
+        }
+        allData[semester] = data
+      }
+      sendResponse(allData)
+      return
+    }
     const result = await chrome.storage.local.get([
       `lastFetch-${request.semester}`,
       `data-${request.semester}`,
@@ -102,10 +124,10 @@ const handler = async (
       result[`lastFetch-${request.semester}`] ?? new Date("2019")
     let data = result[`data-${request.semester}`]
     if (Date.now() - new Date(lastFetch).getTime() > 1000 * 60 * 60 * 24) {
-      console.log("Data outdated, refreshing")
+      console.log(`Data outdated fpr ${request.semester}, refreshing`)
       data = await getData(request.semester)
     }
-    sendResponse(data)
+    sendResponse({ [request.semester]: data })
   } else if (request.type === "sendData") {
     if (
       !arraysEqual(groupOptions, request.groupOptions) ||

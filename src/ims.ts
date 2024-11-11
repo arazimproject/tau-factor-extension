@@ -15,8 +15,8 @@ const tryAddButtons = async () => {
     return
   }
 
-  const semester =
-    (parseInt(s.slice(0, 4), 10) + 1).toString() + SEMESTER_MAP[s[4]]
+  const year = (parseInt(s.slice(0, 4), 10) + 1).toString()
+  const semester = year + SEMESTER_MAP[s[4]]
   const data = await chrome.runtime.sendMessage({ type: "getData", semester })
 
   for (const table of Array.from(document.getElementsByTagName("table"))) {
@@ -29,7 +29,10 @@ const tryAddButtons = async () => {
           tr.appendChild(td)
         } else {
           const courseId = tr.childNodes[1].textContent!.replace("-", "")
-          if (data[courseId]) {
+          const thisSemester =
+            year +
+            HEBREW_TO_ENGLISH_SEMESTER[tr.childNodes[0].textContent!.trim()!]
+          if (data[thisSemester][courseId]) {
             td.innerHTML = "כבר נוסף!"
             td.style.textAlign = "center"
             tr.appendChild(td)
@@ -89,6 +92,12 @@ const SEMESTER_MAP: Record<string, string> = {
   "2": "b",
   "3": "summer",
   "4": "all_year",
+  "9": "all_year",
+}
+
+const HEBREW_TO_ENGLISH_SEMESTER: Record<string, string> = {
+  א: "a",
+  ב: "b",
 }
 
 const tryGetData = async () => {
