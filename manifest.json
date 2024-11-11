@@ -1,7 +1,7 @@
 {
   "name": "TAU Factor",
   "description": "A new extension for TAU Factor's new home on Arazim Project's website!",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "manifest_version": 3,
   "icons": {
     "16": "icon/icon-16.png",
