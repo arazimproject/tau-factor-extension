@@ -10,7 +10,7 @@
 
 Welcome to Arazim Project's TAU Factor extension!
 
-We store previous exam grade histograms and data (average, median, standard deviation) for your comfort to download at https://arazim-project.com/courses/grades.json.
+We store previous exam grade histograms and data (mean, median, standard deviation) for your comfort to download at https://arazim-project.com/courses/grades.json.
 
 You may also use [Dib It](https://arazim-project.com/dib-it), [Arazim Project's TAU Factor](https://arazim-project.com/tau-factor) or [TAU Search](https://arazim-project.com/tau-search) which utilize this information.
 

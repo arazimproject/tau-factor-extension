@@ -140,8 +140,8 @@ const handler = async (
           moed: parseInt(request.moed, 10),
           distribution: request.distribution,
         }
-        if (request.average) {
-          newData.average = request.average
+        if (request.mean) {
+          newData.mean = request.mean
         }
         if (request.median) {
           newData.median = request.median

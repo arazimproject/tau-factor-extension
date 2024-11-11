@@ -147,7 +147,7 @@ const tryGetData = async () => {
     const s = split[split.length - 1]
     const semester =
       (parseInt(s.slice(0, 4), 10) + 1).toString() + SEMESTER_MAP[s[5]]
-    const average = parseFloat(tableElements[1].textContent!)
+    const mean = parseFloat(tableElements[1].textContent!)
     const median = parseInt(tableElements[3].textContent!, 10)
     const standardDeviation = parseFloat(tableElements[5].textContent!)
 
@@ -167,7 +167,7 @@ const tryGetData = async () => {
       courseId,
       semester,
       distribution,
-      average,
+      mean,
       median,
       standardDeviation,
     })
