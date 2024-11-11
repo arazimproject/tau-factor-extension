@@ -28,5 +28,12 @@ if __name__ == "__main__":
                 print(f"Adding {course_id} for {semester}")
                 grades[course_id][semester] = semester_json[course_id]
 
+    for course_id in grades.keys():
+        for semester in grades[course_id].keys():
+            for values in grades[course_id][semester].values():
+                for value in values:
+                    if "average" in value:
+                        value["mean"] = value.pop("average")
+
     with open("grades.json", "w") as f:
         json.dump(grades, f)
