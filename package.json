@@ -1,5 +1,5 @@
 {
-  "name": "tau-factor-extension",
+  "name": "tau-refactor-extension",
   "module": "index.ts",
   "type": "module",
   "scripts": {

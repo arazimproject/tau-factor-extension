@@ -25,7 +25,7 @@ const tryAddButtons = async () => {
         const td = document.createElement("td")
         if (tr.childNodes[0].textContent?.trim() === "סמס") {
           // header row
-          td.innerText = "הוסף ל-TAU Factor"
+          td.innerText = "הוסף ל-TAU Refactor"
           tr.appendChild(td)
         } else {
           const courseId = tr.childNodes[1].textContent!.replace("-", "")
